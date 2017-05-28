@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from 91.234.35.26/advantage-admin/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Aug 2016 14:22:42 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <title>ISIGN | 登录</title>
+
+
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/waves.min.css">
+
+
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon" />
+  <!--[if lt IE 9]>
+      <script src="/static/js/html5shiv.min.js"></script>
+      <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body action='form.html'>
+  <div class="table-wrapper">
+    <div class="table-row">
+      <div class="table-cell text-center">
+        <div class="login i-block">
+          <div class="content-box">
+            <div class="light-blue-bg biggest-box">
+
+              <h1 class="zero-m text-uppercase">欢迎</h1>
+
+            </div>
+            <div class="big-box text-left login-form">
+              <h4 class="text-center">登录</h4>
+              <form action="{% url 'sign:loginHandle' %}" method="post">
+                  {% csrf_token %}
+                <div class="form-group">
+                  <input type="text" class="form-control material" id="login" name="user_name" placeholder="用户名">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control material" id="password" name="user_pass" placeholder="密码">
+                </div>
+
+                <button type="submit" class="btn btn-block btn-info text-uppercase waves">登录</button>
+
+              </form>
+              <div align="center"><a href="#" class="green i-block">忘记密码?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  class="green i-block" href="../register">    没有账户?</a></div>
+              
+              <a class="btn btn-block btn-warning text-uppercase waves waves-button" href="{% url 'sign:register' %}">创建新账户</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/waves.min.js"></script>
+  <script>
+    //Waves effect on buttons
+    Waves.attach('.waves', ['waves-float']);
+    Waves.init();
+  </script>
+
+</body>
+
+
+<!-- Mirrored from 91.234.35.26/advantage-admin/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Aug 2016 14:22:42 GMT -->
+</html>

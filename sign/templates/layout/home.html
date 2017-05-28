@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no"/>
+
+    <title>RENAISSANCE | Dashboard</title>
+
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/static/css/metisMenu.min.css">
+    <link rel="stylesheet" href="/static/css/waves.min.css">
+    <link rel="stylesheet" href="/static/css/jquery.mCustomScrollbar.css">
+
+    <link rel="stylesheet" href="/static/css/cs-select.css">
+    <link rel="stylesheet" href="/static/css/cs-skin-elastic.css">
+
+    {#  <link rel="stylesheet" href="/static/css/c3.min.css">#}
+    {#  <link rel="stylesheet" href="/static/css/zabuto_calendar.min.css">#}
+    <script src="/static/js/modernizr.custom.js"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <link rel="stylesheet" href="/static/css/bootstrap-clockpicker.min.css">
+
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon"/>
+    <!--[if lt IE 9]>
+      <script src="/static/js/html5shiv.min.js"></script>
+      <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+<!--Preloader-->
+<div id="preloader" class="preloader table-wrapper">
+    <div class="table-row">
+        <div class="table-cell">
+            <div class="la-ball-scale-multiple la-3x">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-wrapper" class="main-wrapper">
+
+    <ul id="gn-menu" class="navbar gn-menu-main">
+        <li class="gn-trigger">
+            <a id="menu-toggle" class="menu-toggle gn-icon gn-icon-menu">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="cross">
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
+            <nav class="gn-menu-wrapper">
+                <div class="gn-scroller">
+                    <ul class="gn-menu metismenu">
+                        <li class="active">
+                            <a href="index-2.html" aria-expanded="true"><i class="fa fa-th"></i>签到<span
+                                    class="fa arrow"></span></a>
+                            <ul class="gn-submenu collapse" aria-expanded="true">
+                                <li><a class="isign" href="{% url 'sign:isign' %}">我要签到</a></li>
+                                <li><a class="mysign" href="{% url 'sign:mysign' %}">我的签到</a></li>
+                                <li><a class="details" href="{% url 'sign:details' %}">签到详情</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="persion-info" href="{% url 'sign:person-info' %}"><i
+                                    class="fa fa-calendar-o"></i>个人详情<span
+                                    class="label label-warning pull-right">9</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /gn-scroller -->
+                <div class="bottom-bnts">
+                    <a class="profile" href="#"><i class="mdi mdi-account"></i></a>
+                    <a class="fix-nav" href="#"><i class="mdi mdi-pin"></i></a>
+                    <a class="logout" href="#"><i class="mdi mdi-power"></i></a>
+                </div>
+            </nav>
+        </li>
+        <li>
+            <a href="index-2.html" class="logo text-uppercase"> Isign <i class="fa fa-toggle-on"></i></a>
+        </li>
+        <li class="top-clock">
+            <span class="current-time"></span>
+        </li>
+        <li class="container-fluid pull-right">
+            <ul class="nav navbar-right right-menu">
+                <li class="dropdown notifications">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i> <span class="label label-warning">4</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <h4 class="zero-m text-center">Notifications</h4>
+                        </li>
+                        <li>
+                            <div class="messages">
+                                <div class="member-info">
+                                    <img src="img/team/admin.png" alt="admin" class="img-circle pull-left">
+                                    <span class="member-name">Sash Ficus</span>
+                                    <p class="members-message zero-m">Research is done!</p>
+                                </div>
+                                <div class="member-info">
+                                    <img src="img/team/member.png" alt="admin" class="img-circle pull-left">
+                                    <span class="member-name">Vivien Hulk</span>
+                                    <p class="members-message zero-m">Working hard</p>
+                                </div>
+                                <div class="member-info">
+                                    <img src="img/team/admin.png" alt="admin" class="img-circle pull-left">
+                                    <span class="member-name">Sash Ficus</span>
+                                    <p class="members-message zero-m">Research is done!</p>
+                                </div>
+                                <div class="member-info">
+                                    <img src="img/team/member.png" alt="admin" class="img-circle pull-left">
+                                    <span class="member-name">Vivien Hulk</span>
+                                    <p class="members-message zero-m">Working hard</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown some-btn">
+                    <a class="fullscreen">
+                        <i class="mdi mdi-fullscreen"></i>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <!--Content-->
+    {% block content %}
+
+
+    {% endblock content %}
+
+    <!--Welcome notification-->
+    <div id="welcome"></div>
+</div>
+
+<div class="logout-modal modal fade">
+    <div class="table-wrapper">
+        <div class="table-row">
+            <div class="table-cell text-center">
+                <div class="login i-block">
+                    <div class="content-box">
+                        <div class="light-blue-bg biggest-box">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h3 class="zero-m text-uppercase">您确定要退出吗?</h3>
+                            <a href="#" class="i-block" data-dismiss="modal">去意已决</a>
+                            <a href="#" class="i-block" data-dismiss="modal">留下看看</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Scripts-->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/metisMenu.min.js"></script>
+<script src="/static/js/waves.min.js"></script>
+<script src="/static/js/moment.min.js"></script>
+<script src="/static/js/jquery.nicescroll.min.js"></script>
+<script src="/static/js/jquery.slimscroll.min.js"></script>
+<script src="/static/js/jquery.mCustomScrollbar.js"></script>
+<script src="/static/js/cta.min.js"></script>
+
+<!--Menu-->
+<script src="/static/js/classie.js"></script>
+<script src="/static/js/gnmenu.js"></script>
+
+<!--Selects-->
+<script src="/static/js/selectFx.js"></script>
+
+<script src="/static/js/bootstrap-clockpicker.min.js"></script>
+<!--Flot-->
+{#  <script src="/static/js/jquery.flot.js"></script>#}
+{#  <script src="/static/js/jquery.flot.resize.js"></script>#}
+{#  <script src="/static/js/curvedLines.js"></script>#}
+{#  <script src="/static/js/jquery.flot.orderBars.js"></script>#}
+
+<!--Custom Flot Charts-->
+{#  <script src="/static/js/line-chart-1.js"></script>#}
+{#  <script src="/static/js/line-chart-2.js"></script>#}
+{#  <script src="/static/js/line-chart-3.js"></script>#}
+{#  <script src="/static/js/bar-chart.js"></script>#}
+
+<!--C3.js-->
+{#  <script src="/static/js/d3.min.js"></script>#}
+{#  <script src="/static/js/c3.min.js"></script>#}
+
+<!--EasyPieChart-->
+{#  <script src="/static/js/jquery.easypiechart.min.js"></script>#}
+
+<!--Zabuto Calendar-->
+{#  <script src="/static/js/zabuto_calendar.min.js"></script>#}
+
+<!--Simple Weather-->
+{#  <script src="/static/js/jquery.simpleWeather.min.js"></script>#}
+
+<!--Notification-->
+{#  <script src="/static/js/notificationFx.js"></script>#}
+
+<!--Custom Scripts-->
+<script src="/static/js/common.js"></script>
+
+<script>
+    function focusIcon(className) {
+        $(".gn-menu-wrapper .gn-scroller ul li a").removeClass('active');
+        $("." + className).addClass('active');
+    }
+</script>
+
+{% block script %}
+
+{% endblock script %}
+</body>
+
+</html>

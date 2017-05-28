@@ -1,0 +1,59 @@
+{% extends 'layout/home.html' %}
+
+{% block content %}
+    <div id="content" class="content container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <h2>我的签到</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="">ISign</a></li>
+                        <li>签到</li>
+                        <li class="active">我的签到</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box big-box">
+            <h4 class="zero-m">我的签到</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <caption>这里将显示我要签到的网站</caption>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>签到网站</th>
+                        <th>账户</th>
+                        <th>设置的签到时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>百度贴吧</td>
+                        <td>鑫鑫</td>
+                        <td>8:00</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a href="" class="btn waves btn-warning" title="修改"><i
+                                        class="fa fa-pencil"></i></a>
+                                <button type="button" class="btn waves btn-danger" onclick="delSite()"
+                                        title="删除"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        focusIcon('mysign');
+    </script>
+{% endblock script %}
