@@ -25,19 +25,7 @@
       <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
       <script src="bower_components/respondJs/dest/respond.min.js"></script>
     <![endif]-->
-    <script language="javascript">
-function check()
-{
-if(password.value!=password1.value){
-	alert("两次密码不一致，请重新输入!");
-	password1.value=="";
-	password1.focus();
-	return false;
-}
-	return true;
-}
 
-</script>
 </head>
 
 <body>
@@ -53,21 +41,22 @@ if(password.value!=password1.value){
             </div>
             <div class="big-box text-left registration-form">
               <h4 class="text-center">创建一个新账户</h4>
-              <form>
+              <form method="post" action="{% url 'sign:RegisterHandle' %}">
+                {% csrf_token %}
                 <div class="form-group">
-                  <input type="text" class="form-control material" id="fullname" placeholder="全名" required>
+                  <input type="text" class="form-control material" name="user_name" id="user_name" placeholder="用户名" required>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control material" id="email" placeholder="邮箱">
+                  <input type="email" class="form-control material" name="user_email" id="user_email" placeholder="邮箱">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control material" id="login" placeholder="用户名" required>
+                  <input type="text" class="form-control material" onblur="isPhoneNum(this.value)" name="user_phone" id="user_phone" placeholder="手机号" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control material" id="password" placeholder="密码" required>
+                  <input type="password" class="form-control material"name="user_password" id="password" placeholder="密码" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control material" id="password1" placeholder="确认密码" required>
+                  <input type="password" class="form-control material" name="password1" id="password1" placeholder="确认密码" required>
                 </div>
                 <div class="checkbox">
 
@@ -96,6 +85,22 @@ if(password.value!=password1.value){
     //Waves effect on buttons
     Waves.attach('.waves', ['waves-float']);
     Waves.init();
+
+function check()
+{
+if(password.value!=password1.value){
+	alert("两次密码不一致，请重新输入!");
+	password1.value=="";
+	password1.focus();
+	return false;
+}
+	return true;
+}
+
+function isPhoneNum(num) {
+  alert(num);
+  return 0;
+}
   </script>
 </body>
 

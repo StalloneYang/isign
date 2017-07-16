@@ -36,3 +36,11 @@ def details(request):
 
 def persionInfo(request):
     return render(request, 'person-info.html')
+
+def RegisterHandle(request):
+    user_name = request.POST['user_name']
+    user_email = request.POST['user_email']
+    user_phone = request.POST['user_phone']
+    password = request.POST['user_password']
+    user_password= make_password(password, None, 'pbkdf2_sha256')
+    return render(request, 'login.html')
