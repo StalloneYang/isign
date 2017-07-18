@@ -43,4 +43,9 @@ def RegisterHandle(request):
     user_phone = request.POST['user_phone']
     password = request.POST['user_password']
     user_password= make_password(password, None, 'pbkdf2_sha256')
+    userinfo=User.objects.create(
+        user_name=user_name,
+        user_pass=user_password,
+        user_email=user_email,
+        user_phone=user_phone)
     return render(request, 'login.html')

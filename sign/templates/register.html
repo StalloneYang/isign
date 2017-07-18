@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/static/css/font-awesome.min.css">
   <link rel="stylesheet" href="/static/css/waves.min.css">
 
-
+  <link rel="stylesheet" href="/static/css/sweetalert.css">
   <link rel="stylesheet" href="/static/css/style.css">
 
   <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
@@ -41,7 +41,7 @@
             </div>
             <div class="big-box text-left registration-form">
               <h4 class="text-center">创建一个新账户</h4>
-              <form method="post" action="{% url 'sign:RegisterHandle' %}">
+              <form method="post" action="{% url 'sign:RegisterHandle' %}" name="form1">
                 {% csrf_token %}
                 <div class="form-group">
                   <input type="text" class="form-control material" name="user_name" id="user_name" placeholder="用户名" required>
@@ -53,10 +53,10 @@
                   <input type="text" class="form-control material" onblur="isPhoneNum(this.value)" name="user_phone" id="user_phone" placeholder="手机号" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control material"name="user_password" id="password" placeholder="密码" required>
+                  <input type="password" class="form-control material" name="user_password" id="user_password" placeholder="密码" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control material" name="password1" id="password1" placeholder="确认密码" required>
+                  <input type="password" class="form-control material" name="password1" id="password1" onblur="check()" placeholder="确认密码" required>
                 </div>
                 <div class="checkbox">
 
@@ -81,6 +81,7 @@
 
   <script src="/static/js/jquery.min.js"></script>
   <script src="/static/js/waves.min.js"></script>
+    <script src="/static/js/sweetalert.min.js"></script>
   <script>
     //Waves effect on buttons
     Waves.attach('.waves', ['waves-float']);
@@ -88,20 +89,42 @@
 
 function check()
 {
-if(password.value!=password1.value){
-	alert("两次密码不一致，请重新输入!");
-	password1.value=="";
-	password1.focus();
+if(user_password.value!=password1.value){
+	swal("两次密码不一致，请重新输入!");
+	password1.value="";
+	user_password.value="";
+	document.form1.user_password.focus();
 	return false;
 }
-	return true;
 }
 
 function isPhoneNum(num) {
-  alert(num);
-  return 0;
+      if(num.length==0)
+       {
+          //alert('');
+         // swal("请输入手机号码！");
+          document.form1.user_phone.focus();
+          return false;
+       }
+       if(num.length!=11)
+       {
+           //alert('请输入有效的手机号码！');
+           swal("请输入有效的手机号码！");
+           document.form1.user_phone.focus();
+           return false;
+       }
+
+       var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+       if(!myreg.test(num))
+       {
+           //alert('请输入有效的手机号码！');
+           swal("请输入有效的手机号码！");
+           document.form1.user_phone.focus();
+           return false;
+       }
 }
   </script>
+
 </body>
 
 
