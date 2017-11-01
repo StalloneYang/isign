@@ -14,9 +14,17 @@ def login(request):
     return render(request, 'login.html')
 
 def loginHandle(request):
-    user_name = request.POST['user_name']
-    user_info = User.objects.filter(user_name=user_name)
-    return None
+    if request.method == 'POST':
+        user_name = request.POST['user_name']
+        user_pass = request.POST['user_pass']
+        user_info = User.objects.filter(user_name=user_name)
+        res = check_password(user_pass, user_info[0].user_pass)
+        if res:
+            return render(request, 'isign.html')
+        else:
+            return render(request, 'login.html')
+    else:
+        return render(request, 'login.html')
 
 def register(request):
     """注册新用户"""
@@ -42,7 +50,7 @@ def RegisterHandle(request):
     user_email = request.POST['user_email']
     user_phone = request.POST['user_phone']
     password = request.POST['user_password']
-    user_password= make_password(password, None, 'pbkdf2_sha256')
+    user_password = make_password(password, None, 'pbkdf2_sha256')
     userinfo=User.objects.create(
         user_name=user_name,
         user_pass=user_password,
